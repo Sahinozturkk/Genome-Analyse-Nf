@@ -5,7 +5,7 @@ Genome analyse guide with pipeline created with nextflow.
 
 ---
 
-# Nextflow ile FastQC Analizi Yapma / Performing FastQC Analysis with Nextflow
+# Nextflow ile FastQC Analizi Yapma /  FastQC Analysis with Nextflow
 
 Bu belge, Nextflow kullanarak FastQC analizi yapmayı adım adım açıklar. / This document explains how to perform FastQC analysis using Nextflow step by step.
 
