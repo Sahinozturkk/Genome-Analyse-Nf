@@ -1,9 +1,54 @@
-# Genome-Analyse-Nf
-Genome analyse guide with pipeline created with nextflow.
-
 
 
 ---
+
+# Nextflow ile Veri Akışı Yönetimi / Managing Data Flow with Nextflow
+
+Nextflow, araştırmacıların ve veri bilimcilerin karmaşık veri analizi iş akışlarını yönetmelerine yardımcı olan bir araçtır. / Nextflow is a tool that helps researchers and data scientists manage complex data analysis workflows.
+
+## Ne İşe Yarar? / What is it for?
+
+Nextflow, dağınık ve paralel veri işleme iş akışlarını yönetmek için kullanılır. Başlıca özellikleri şunlardır: / Nextflow is used to manage distributed and parallel data processing workflows. Its main features include:
+
+- **Modüler İş Akışları / Modular Workflows**: Her işlemi ayrı bir modül olarak tanımlama ve birleştirme olanağı sunar. / It allows defining and combining each task as a separate module.
+- **Yeniden Kullanılabilirlik / Reusability**: Bir defa tanımlanan iş akışlarını kolayca yeniden kullanabilirsiniz. / Workflows defined once can be easily reused.
+- **Paralel İşleme / Parallel Processing**: İşlemleri aynı anda veya sırayla çalıştırabilir, böylece performansı artırabilirsiniz. / Processes can be run concurrently or sequentially to improve performance.
+- **Dağınık Hesaplama / Distributed Computing**: Birden fazla bilgisayarı veya bulut kaynağını kullanarak işlemleri dağıtabilir. / Tasks can be distributed across multiple machines or cloud resources.
+- **Yeniden Başlatma Yeteneği / Restart Capability**: İşlemler hata aldığında veya kesintiye uğradığında kaldığı yerden devam edebilir. / Processes can resume from where they left off in case of errors or interruptions.
+- **Hata İzleme ve Hata Ayıklama / Error Monitoring and Debugging**: İş akışlarını izlemek ve hataları gidermek için kolay araçlar sunar. / Provides easy-to-use tools for monitoring workflows and debugging errors.
+
+## Nasıl Kurulur? / How to Install?
+
+### Bash Üzerinde Kurulum / Installation on Bash
+
+1. **Java JDK Kurulumu / Install Java JDK**: Nextflow'un çalışması için Java JDK'nın yüklü olması gerekir. [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) veya [OpenJDK](https://openjdk.java.net/) kullanabilirsiniz. / Java JDK is required for Nextflow to work. You can use either [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or [OpenJDK](https://openjdk.java.net/).
+
+2. **Nextflow Kurulumu / Install Nextflow**: Bash terminalinize aşağıdaki komutu yazarak Nextflow'u indirebilir ve kurabilirsiniz: / You can download and install Nextflow by typing the following command into your Bash terminal:
+
+    ```bash
+    curl -s https://get.nextflow.io | bash
+    ```
+
+3. **Nextflow'un PATH'e Eklenmesi / Adding Nextflow to PATH**: Nextflow betiğini PATH ortam değişkenine ekleyin: / Add the Nextflow script to your PATH environment variable:
+
+    ```bash
+    export PATH=$PATH:<nextflow_installation_directory>
+    ```
+
+### Conda Üzerinde Kurulum / Installation on Conda
+
+1. **Conda Ortamı Oluşturma / Create a Conda Environment**: Bir Conda ortamı oluşturun (isteğe bağlı): / Create a Conda environment (optional):
+
+    ```bash
+    conda create -n nextflow_env
+    conda activate nextflow_env
+    ```
+
+2. **Nextflow Kurulumu / Install Nextflow**: Conda ile Nextflow'un resmi kanalından kurulum yapın: / Install Nextflow from the official channel of Conda:
+
+    ```bash
+    conda install -c bioconda nextflow
+    ```
 
 # Nextflow ile FastQC Analizi Yapma /  FastQC Analysis with Nextflow
 
@@ -80,4 +125,3 @@ nextflow run script.nf
 FastQC analizi tamamlandıktan sonra, belirttiğiniz çıktı klasöründe QC raporlarını bulabilirsiniz. / After the completion of FastQC analysis, you can find the QC reports in the specified output folder.
 
 ---
-
