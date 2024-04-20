@@ -1,8 +1,8 @@
 nextflow.enable.dsl=2
 
-params.fastq="/home/ozturksahin/nextflow/fastq/*.fastq.gz"
+params.fastq="/*.fastq.gz"
 
-params.qc_report="/home/ozturksahin/nextflow/fastqc_report"
+params.qc_report="/fastqc_before_trim"
 
 
 
