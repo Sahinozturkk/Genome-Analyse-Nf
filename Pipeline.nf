@@ -1,10 +1,7 @@
 nextflow.enable.dsl=2
 
-params.fastq="/*.fastq.gz"
-
-params.qc_report="/fastqc_before_trim"
-
-
+params.fastq="data/*.fastq.gz"
+params.qc_report="results/fastqc-before-trim"
 
 process QC {
 
