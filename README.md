@@ -63,6 +63,16 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 - Nextflow'un yüklü olduğundan emin olun. Nextflow'un nasıl yükleneceğine dair talimatlar için [Nextflow resmi belgelerine](https://www.nextflow.io/docs/latest/getstarted.html) başvurabilirsiniz. / Make sure Nextflow is installed. For instructions on how to install Nextflow, you can refer to the [official Nextflow documentation](https://www.nextflow.io/docs/latest/getstarted.html).
 - FastQC'nin sistemde yüklü olduğundan emin olun. FastQC'nin yüklü olup olmadığını kontrol etmek için terminal veya komut istemcisinde `fastqc --version` komutunu çalıştırabilirsiniz. FastQC'nin yüklü olmadığı durumda, [FastQC web sitesinden](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) indirip kurabilirsiniz. / Ensure FastQC is installed on your system. You can check if FastQC is installed by running the `fastqc --version` command in your terminal or command prompt. If FastQC is not installed, you can download and install it from the [FastQC website](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
+- **Conda için "Fastqc" ve "Cutadapt" Yükleme Kodları/ "Fastqc" and "Cutadapt" Installation Codes for Conda:**
+
+```bash
+conda install bioconda::fastqc
+```
+```bash
+conda install bioconda::cutadapt
+```
+
+
 ## Adım Adım Talimatlar / Step-by-Step Instructions
 
 1. **nextflow.config Dosyası Ayarları / Setting up nextflow.config File**
@@ -74,9 +84,9 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
    ```bash
    nextflow.enable.dsl=2
 
-   params.fastq= # "your_path/fastq/*.fastq.gz"
+   params.fastq= # "data/*.fastq.gz"
 
-   params.qc_report= # "your_path/fastqc_report"
+   params.qc_report= # "results/fastqc_report"
    ```
 
 3. **QC Süreci Tanımı / Definition of QC Process**
@@ -128,7 +138,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 Belirtilen adımları izledikten sonra, Nextflow betiğini çalıştırarak FastQC analizini başlatabilirsiniz. / After following the specified steps, you can initiate FastQC analysis by running the Nextflow script.
 
 ```bash
-nextflow run script.nf
+nextflow run pipeline.nf
 ```
 
 ## Sonuçlar / Results
