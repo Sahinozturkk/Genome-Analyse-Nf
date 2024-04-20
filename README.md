@@ -67,6 +67,8 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
 1. **nextflow.config Dosyası Ayarları / Setting up nextflow.config File**
 
+2.**Okumalar için/ for reads:** https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=drive_link
+
    İlk olarak, `nextflow.config` dosyasında DSL2'nin etkin olduğundan emin olun. Bu, Nextflow'un ikinci nesil Domain Specific Language (DSL) sürümünü kullanacağını belirtir. Ayrıca, giriş ve çıkış dosya yolunu belirlemek için `params` bloğunu yapılandırın. / First, make sure DSL2 is enabled in the `nextflow.config` file. This specifies that Nextflow will use the second-generation Domain Specific Language (DSL). Also, configure the `params` block to specify the input and output file paths.
 
    ```bash
@@ -77,7 +79,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
    params.qc_report= # "your_path/fastqc_report"
    ```
 
-2. **QC Süreci Tanımı / Definition of QC Process**
+3. **QC Süreci Tanımı / Definition of QC Process**
 
    Ardından, FastQC analizi için bir işlem tanımlayın. Bu işlemde, giriş dosyalarını alacak, FastQC analizini yapacak ve çıktıları belirtilen klasöre kaydedecektir. / Next, define a process for FastQC analysis. In this process, it will take input files, perform FastQC analysis, and save the outputs to the specified folder.
 
@@ -99,7 +101,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
    }
    ```
 
-3. **Çalışma Akışı Tanımı / Definition of Workflow**
+4. **Çalışma Akışı Tanımı / Definition of Workflow**
 
    Son olarak, bir çalışma akışı tanımlayın. Bu akış, giriş dosyalarını bir kanal aracılığıyla alacak, QC işlemini çalıştıracak ve çıktıları gösterecektir. / Finally, define a workflow. This workflow will take input files through a channel, execute the QC process, and display the outputs.
 
