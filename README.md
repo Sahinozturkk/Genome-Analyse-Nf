@@ -84,9 +84,9 @@ conda install bioconda::cutadapt
    ```bash
    nextflow.enable.dsl=2
 
-   params.fastq= # "data/*.fastq.gz"
+   params.fastq=  "data/*.fastq.gz"
 
-   params.qc_report= # "results/fastqc_report"
+   params.qc_report=  "results/fastqc_report"
    ```
 
 3. **QC Süreci Tanımı / Definition of QC Process**
