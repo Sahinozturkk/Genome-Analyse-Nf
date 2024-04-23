@@ -1,5 +1,4 @@
 
-
 ---
 
 # Nextflow Nedir? / What is Nextflow?
