@@ -66,3 +66,5 @@ workflow {
     QC_AFTER_TRIM(trimmed_fastq_ch)
     QC_AFTER_TRIM.out.view()
 }
+
+
