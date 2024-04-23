@@ -30,7 +30,7 @@ process TRIM {
     path fastq
 
     output:
-    path "${fastq.baseName}_trimmed.fastq.gz"
+    path "*"
 
     script:
     """
