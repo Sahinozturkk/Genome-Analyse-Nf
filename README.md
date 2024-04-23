@@ -71,7 +71,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
    `nextflow.config` dosyasını, giriş ve çıkış dosya yollarını içerecek şekilde ayarlayın. Ayrıca DSL2'yi etkinleştirin. / Set up the `nextflow.config` file to include the input and output file paths. Also, enable DSL2.
 
-   ```groovy
+   ```bash
    nextflow.enable.dsl=2
 
    params.fastq="data/*.fastq.gz"
@@ -84,7 +84,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
    Ham FASTQ dosyalarına FastQC analizi uygulamak için bir süreç tanımlayın. / Define a process to apply FastQC analysis to raw FASTQ files.
 
-   ```groovy
+   ```bash
    process QC {
 
        publishDir("${params.qc_report}", mode: 'copy')
@@ -101,7 +101,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
        """
    }
    ```
-   ## "publishDir" Nedir? / What is "publishDir"?
+   ## publishDir Nedir? / What is publishDir?
 
    *publishDir("${params.qc_report}", mode: 'copy'):*
 
@@ -116,7 +116,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
    FastQC analizinden sonra FASTQ dosyalarını kesmek için bir süreç tanımlayın. Bu adımda Cutadapt kullanılır. / Define a process to trim FASTQ files after FastQC analysis. This step uses Cutadapt.
 
-   ```groovy
+   ```bash
    process TRIM {
 
        publishDir("${params.trimmed_fastq}", mode: 'copy')
@@ -147,7 +147,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
    Kesilen FASTQ dosyalarına FastQC analizi uygulamak için bir süreç tanımlayın. / Define a process to apply FastQC analysis to trimmed FASTQ files.
 
-   ```groovy
+   ```bash
    process QC_AFTER_TRIM {
 
        publishDir("${params.qc_report_after_trim}", mode: 'copy')
@@ -169,7 +169,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
    Çalışma akışını FastQC, kesme ve ardından tekrar FastQC analizi için ayarlayın. / Define the workflow to include FastQC, trimming, and then another FastQC analysis.
 
-   ```groovy
+   ```bash
    workflow {
 
        fastq_ch = Channel.fromPath(params.fastq)
