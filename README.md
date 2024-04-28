@@ -66,6 +66,8 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 - Cutadapt'ın yüklü olduğundan emin olun. Bunu kontrol etmek için cutadapt --version komutunu çalıştırabilirsiniz. Cutadapt'ı yüklemek için Cutadapt'ın GitHub sayfasını ziyaret edebilirsiniz. / Make sure Cutadapt is installed. You can check by running cutadapt --version. To install Cutadapt, visit the Cutadapt GitHub page.
 
 ## Adım Adım Talimatlar / Step-by-Step Instructions
+Data klasörüne erişim için / For data:
+https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=drive_link
 
 1. **nextflow.config Dosyası Ayarları / Setting up the nextflow.config File**
 
