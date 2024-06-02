@@ -11,7 +11,7 @@ params.quality = "20" // Opisyonel / Optional
 params.min_length = "30" // Opisyonel / Optional
 
 process QC {
-    conda 'fastqc'  // FastQC'yi Conda'da yükler / Installs FastQC in Conda
+    conda 'bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
     publishDir "${params.qc_report}", mode: 'copy'
 
@@ -28,7 +28,7 @@ process QC {
 }
 
 process TRIM {
-    conda 'cutadapt'  // Cutadapt'ı Conda'da yükler / Installs Cutadapt in Conda
+    conda 'bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
     publishDir "${params.trimmed_fastq}", mode: 'copy'
 
@@ -45,7 +45,7 @@ process TRIM {
 }
 
 process QC_AFTER_TRIM {
-    conda 'fastqc'  // FastQC'yi Conda'da yükler / Installs FastQC in Conda
+   conda 'bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
     publishDir("${params.qc_report_after_trim}", mode: 'copy')
 
