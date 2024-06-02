@@ -1,0 +1,11 @@
+name: bioinfo
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastqc
+  - cutadapt
+  - bwa
+  - samtools
+  - openssl=1.0
+
