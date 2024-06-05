@@ -69,10 +69,9 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 Data klasörüne erişim için / For data:
 https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=drive_link
 
-1. **nextflow.config Dosyası Ayarları / Setting up the nextflow.config File**
+1.  Paramatrelerin oluşturulması ve .yaml eklentisi / Creating of parameters and .yaml plugin
 
-   `nextflow.config` dosyasını, giriş ve çıkış dosya yollarını içerecek şekilde ayarlayın. Ayrıca DSL2'yi etkinleştirin. / Set up the `nextflow.config` file to include the input and output file paths. Also, enable DSL2.
-
+  **Parametreler / Parameters**
    ```bash
    nextflow.enable.dsl=2
 
@@ -80,6 +79,26 @@ https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=dri
    params.qc_report="results/fastqc-before-trim"
    params.trimmed_fastq="results/trimmed_fastq"
    params.qc_report_after_trim="results/fastqc-after-trim"
+   params.threads = "4"
+   params.adapter_1 = "AGATCGGAAGAG" // Opisyonel / Optional
+   params.adapter_2 = "AGATCGGAAGAG" // Opisyonel / Optional
+   params.quality = "20" // Opisyonel / Optional
+   params.min_length = "30" // Opisyonel / Optional
+   params.reference_genome = "reference/*.fasta"
+   params.mapped_bam = "results/mapped_bam"
+   ```
+**bioinfo.yaml Dosyasının Hazırlanması / Preparing the bioinfo.yaml File**
+ ```bash
+name: bioinfo
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastqc
+  - cutadapt
+  - bwa
+  - samtools
+  - openssl=1.0
    ```
 
 2. **QC Süreci Tanımı / Defining the QC Process**
@@ -88,6 +107,7 @@ https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=dri
 
    ```bash
    process QC {
+   conda 'envs/bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
        publishDir("${params.qc_report}", mode: 'copy')
 
@@ -120,6 +140,7 @@ https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=dri
 
    ```bash
    process TRIM {
+       conda 'envs/bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
        publishDir("${params.trimmed_fastq}", mode: 'copy')
 
@@ -151,6 +172,7 @@ https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=dri
 
    ```bash
    process QC_AFTER_TRIM {
+        conda 'envs/bioinfo.yaml'  // Araçları Conda'da yükler / Installs tools in Conda
 
        publishDir("${params.qc_report_after_trim}", mode: 'copy')
 
@@ -167,21 +189,66 @@ https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=dri
    }
    ```
 
-6. **Çalışma Akışı Tanımı / Defining the Workflow**
+
+6. **BWA Entegrasyonu / Integrating BWA**
+BWA aracını iş akışınıza entegre etmek için aşağıdaki adımları izleyin: / Follow these steps to integrate the BWA tool into your workflow:
+
+**BWA Süreci Tanımı / Defining the BWA Process**
+BWA kullanarak hizalama işlemi yapmak için bir süreç tanımlayın. / Define a process to perform alignment using BWA.
+
+```bash
+
+process BWA_INDEX {
+    conda 'envs/bioinfo.yaml'
+    input:
+    path reference_genome
+    output:
+    path "*"
+    script:
+    """
+    bwa index $reference_genome
+    """
+}
+
+process BWA_MEM {
+    conda 'envs/bioinfo.yaml'
+    publishDir "${params.mapped_bam}", mode: 'copy'
+    input:
+    tuple val(reference_genome), path(trimmed_fastq)
+    output:
+    path "${trimmed_fastq.baseName}.bam"
+    script:
+    """
+    bwa mem -t ${params.threads} $reference_genome $trimmed_fastq | \\
+    samtools view -Sb - | \\
+    samtools sort -o ${trimmed_fastq.baseName}.bam
+    samtools index ${trimmed_fastq.baseName}.bam
+    """
+}
+ ```
+   
+
+7. **Çalışma Akışı Tanımı / Defining the Workflow**
 
    Çalışma akışını FastQC, kesme ve ardından tekrar FastQC analizi için ayarlayın. / Define the workflow to include FastQC, trimming, and then another FastQC analysis.
 
    ```bash
-   workflow {
+   fastq_ch = Channel.fromPath(params.fastq)
 
-       fastq_ch = Channel.fromPath(params.fastq)
-       QC(fastq_ch)
-       QC.out.view()
+    qc_results = QC(fastq_ch)
+    qc_results.view()
 
-       trimmed_fastq_ch = TRIM(fastq_ch)
-       QC_AFTER_TRIM(trimmed_fastq_ch)
-       QC_AFTER_TRIM.out.view()
-   }
+    trimmed_fastq_ch = TRIM(fastq_ch)
+
+    qc_after_trim_results = QC_AFTER_TRIM(trimmed_fastq_ch)
+    qc_after_trim_results.view()
+
+    reference_genome_ch = Channel.fromPath(params.reference_genome)
+    BWA_INDEX(reference_genome_ch)
+
+    mapped_bam_ch = trimmed_fastq_ch.map { trimmed_fastq -> tuple(params.reference_genome, trimmed_fastq) }
+    BWA_MEM(mapped_bam_ch).view()
+
    ```
 
 ## Çalıştırma / Running
