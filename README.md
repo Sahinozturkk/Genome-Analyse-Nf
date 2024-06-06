@@ -67,7 +67,7 @@ Nextflow, veri işleme akışlarını yönetmek için güçlü ve esnek bir ara�
 
 ## Adım Adım Talimatlar / Step-by-Step Instructions
 Data ve referans klasörüne erişim için / For data and reference:
-https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q?usp=drive_link
+https://drive.google.com/drive/folders/1nVZoJBbzGHKM0azNMPNGla_-A1h68H6Q
 
 1.  Paramatrelerin oluşturulması ve .yaml eklentisi / Creating of parameters and .yaml plugin
 
