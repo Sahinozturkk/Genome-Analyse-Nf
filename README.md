@@ -256,7 +256,7 @@ process BWA_MEM {
 Belirtilen adımları izledikten sonra, Nextflow betiğini çalıştırarak FastQC analizini başlatabilirsiniz. / After following the specified steps, you can initiate the FastQC analysis by running the Nextflow script.
 
 ```bash
-nextflow run pipeline.nf
+nextflow run Script/Pipeline.nf
 ```
 ## Sonuçlar / Results
 FastQC analizi tamamlandıktan sonra, FastQC raporlarını belirtilen QC rapor klasörlerinde bulabilirsiniz. / After the completion of FastQC analysis, you can find the FastQC reports in the specified QC report folders.
