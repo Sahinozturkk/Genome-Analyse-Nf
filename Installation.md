@@ -17,9 +17,9 @@
     ```
 
     ### Conda Üzerinde Kurulum / Installation on Conda
-    Conda, farklı yazılım paketlerini ve onların bağımlılıklarını yönetmek için kullanılan açık kaynaklı bir paket yöneticisidir. Conda'nın nasıl kurulacağını ve kullanılarak Nextflow'un nasıl yükleneceğini aşağıda bulabilirsiniz. / Conda is an open-source package manager used to manage different software packages and their dependencies. Below you can find how to install Conda and use it to install Nextflow.
+ Conda, farklı yazılım paketlerini ve onların bağımlılıklarını yönetmek için kullanılan açık kaynaklı bir paket yöneticisidir. Conda'nın nasıl kurulacağını ve kullanılarak Nextflow'un nasıl yükleneceğini aşağıda bulabilirsiniz. / Conda is an open-source package manager used to manage different software packages and their dependencies. Below you can find how to install Conda and use it to install Nextflow.
     
-1. **Conda'yı Kurma / Installing Conda**
+  1. **Conda'yı Kurma / Installing Conda**
 
 Miniconda veya Anaconda yükleyicisini indirin ve kurun. Miniconda, daha hafif bir yükleyicidir ve sadece temel Conda araçlarını içerir, oysa Anaconda, birçok ek veri bilimi paketini içerir. / Download and install the Miniconda or Anaconda installer. Miniconda is a lighter installer and includes only the basic Conda tools, whereas Anaconda includes many additional data science packages.
 
@@ -42,14 +42,14 @@ eval "$(miniconda3/bin/conda shell.bash hook)"
 ```
 
 
-2. **Conda Ortamı Oluşturma / Create a Conda Environment:** *Bir Conda ortamı oluşturun (isteğe bağlı): / Create a Conda environment (optional):*
+  2. **Conda Ortamı Oluşturma / Create a Conda Environment:** *Bir Conda ortamı oluşturun (isteğe bağlı): / Create a Conda environment (optional):*
 
  ```bash
 conda create -n nextflow_env
 conda activate nextflow_env
 ```
 
-3. **Nextflow Kurulumu / Install Nextflow:** *Conda ile Nextflow'un resmi kanalından kurulum yapın: / Install Nextflow from the official channel of Conda:*
+  3. **Nextflow Kurulumu / Install Nextflow:** *Conda ile Nextflow'un resmi kanalından kurulum yapın: / Install Nextflow from the official channel of Conda:*
 
 ```bash
 conda install -c bioconda nextflow
