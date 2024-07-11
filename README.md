@@ -1,3 +1,8 @@
+---
+title: "Nextflow iş akışı yönetim aracı"
+author: "Şahin Öztürk"
+---
+
 # Nextflow Nedir? / What is Nextflow?
 
 Nextflow, ölçeklenebilir, taşınabilir ve tekrarlanabilir iş akışları oluşturmak için kullanılan bir iş akışı sistemidir. Veri akışı programlama modeline dayanmaktadır ve paralel ve dağıtık hatlar yazmayı büyük ölçüde basitleştirir. Bu sayede veri ve hesaplamanın akışına odaklanmanızı sağlar. 
@@ -23,3 +28,13 @@ Nextflow, dağınık ve paralel veri işleme iş akışlarını yönetmek için 
 - **Yeniden Başlatma Yeteneği / Restart Capability**: İşlemler hata aldığında veya kesintiye uğradığında kaldığı yerden devam edebilir. / Processes can resume from where they left off in case of errors or interruptions.
 
 - **Hata İzleme ve Hata Ayıklama / Error Monitoring and Debugging**: İş akışlarını izlemek ve hataları gidermek için kolay araçlar sunar. / Provides easy-to-use tools for monitoring workflows and debugging errors.
+
+## Kurulum ve örnek iş akışı
+
+Kurulum için aşağıdaki dökümanı kullanabilirsiniz:
+
++ [Kurulum](Installation.md)
+
+Örnek bir iş akışı oluşturmak için ise aşağıdaki döküman:
+
++ [Örnek iş akışı](first_script.md)
