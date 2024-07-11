@@ -33,24 +33,36 @@ workflow {
 }
 ```
 
-# Script'i Çalıştırma / Execute the Script
+# Betiği Çalıştırma / Execute the Script
 
-Script'i çalıştırmak için terminalinize aşağıdaki komutu girin: / Execute the script by entering the following command in your terminal:
+Eğer `nextflow` paketini conda ile kurduysak öncelikle aktive edelim:
 
 ```bash
-nextflow run tutorial.nf
+conda activate nextflow_env
 ```
 
-*Sonuç: / Result:*
+Betiği çalıştırmak için terminalinize aşağıdaki komutu girin:
 
+Execute the script by entering the following command in your terminal:
+
+```bash
+nextflow run nf_scripts/tutorial.nf
+```
+
+Sonuç: / Result:
+
+```
 N E X T F L O W  ~  version 23.10.0
 executor >  local (3)
 [69/c8ea4a] process > splitLetters   [100%] 1 of 1 ✔
 [84/c8b7f1] process > convertToUpper [100%] 2 of 2 ✔
 HELLO
 WORLD!
+```
 
 **Not / Note**
 
-Nextflow'un 22.10.0'dan önceki sürümleri için, DSL2'yi açıkça etkinleştirmeniz gerekmektedir. Bunu script'in en üstüne nextflow.enable.dsl=2 ekleyerek veya -dsl2 komut satırı seçeneğini kullanarak yapabilirsiniz. / For versions of Nextflow prior to 22.10.0, you must explicitly enable DSL2 by adding nextflow.enable.dsl=2 to the top of the script or by using the -dsl2 command-line option.
+Nextflow'un 22.10.0'dan önceki sürümleri için, DSL2'yi açıkça etkinleştirmeniz gerekmektedir. Bunu script'in en üstüne nextflow.enable.dsl=2 ekleyerek veya -dsl2 komut satırı seçeneğini kullanarak yapabilirsiniz.
+
+For versions of Nextflow prior to 22.10.0, you must explicitly enable DSL2 by adding nextflow.enable.dsl=2 to the top of the script or by using the -dsl2 command-line option.
 
