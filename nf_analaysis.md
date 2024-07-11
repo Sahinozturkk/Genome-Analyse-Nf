@@ -150,5 +150,5 @@ Pipeline'ı çalıştırmak için terminale aşağıdaki komutu girin:
 Execute the script by entering the following command in your terminal:
 
 ```bash
-    nextflow run Pipeline.nf
+    nextflow run nf_scripts/Pipeline.nf
 ```
