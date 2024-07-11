@@ -37,4 +37,4 @@ Kurulum için aşağıdaki dökümanı kullanabilirsiniz:
 
 Örnek bir iş akışı oluşturmak için ise aşağıdaki döküman:
 
-+ [Örnek iş akışı]()
++ [Örnek iş akışı](first_script.md)
